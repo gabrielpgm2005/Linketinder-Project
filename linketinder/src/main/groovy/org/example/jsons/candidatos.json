@@ -63,5 +63,21 @@
             "Ruby On Rails",
             "PostgreSQL"
         ]
+    },
+    {
+        "nome": "Daniel",
+        "cpf": "676767",
+        "idade": "19",
+        "pais": "Bangladesh",
+        "cep": "11",
+        "descricao": "Hetero",
+        "habilidades": [
+            "Vibecoder",
+            "Ruby",
+            "C",
+            "Java",
+            "Amigo de Tang",
+            "Amigo do claudio e do geminilson"
+        ]
     }
 ]
