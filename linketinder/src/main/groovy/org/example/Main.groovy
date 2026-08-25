@@ -3,8 +3,8 @@ package org.example
 import groovy.json.JsonBuilder
 import groovy.json.JsonSlurper
 
-ArrayList candidatos = new JsonSlurper().parse(new File("./jsons/candidatos.json")) as ArrayList
-ArrayList empresas = new JsonSlurper().parse(new File("./jsons/empresas.json")) as ArrayList
+ArrayList candidatos = new JsonSlurper().parse(new File("/home/gabriel/acelera/Linketinder-Project/linketinder/src/main/groovy/org/example/jsons/candidatos.json")) as ArrayList
+ArrayList empresas = new JsonSlurper().parse(new File("/home/gabriel/acelera/Linketinder-Project/linketinder/src/main/groovy/org/example/jsons/empresas.json")) as ArrayList
 
 String resposta = "s"
 Scanner scanner = new Scanner(System.in)
@@ -36,8 +36,8 @@ while(!resposta.equals("q")){
             break
 
         case "q":
-            new File("./jsons/candidatos.json").text = new JsonBuilder(candidatos).toPrettyString()
-            new File("./jsons/empresas.json").text = new JsonBuilder(empresas).toPrettyString()
+            new File("/home/gabriel/acelera/Linketinder-Project/linketinder/src/main/groovy/org/example/jsons/candidatos.json").text = new JsonBuilder(candidatos).toPrettyString()
+            new File("/home/gabriel/acelera/Linketinder-Project/linketinder/src/main/groovy/org/example/jsons/candidatos.json").text = new JsonBuilder(empresas).toPrettyString()
             break
 
         default:

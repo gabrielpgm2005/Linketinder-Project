@@ -4,7 +4,10 @@ class Pessoas{
 
     static void display(List pessoas){
         pessoas.each {
-            pessoa -> println pessoa
+            pessoa ->
+                println "==============="
+                println pessoa
+                println "==============="
         }
     }
 

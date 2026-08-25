@@ -10,6 +10,14 @@ repositories {
     mavenCentral()
 }
 
+application {
+    mainClass = 'org.example.Main'
+}
+
+tasks.named('run') {
+    standardInput = System.in
+}
+
 dependencies {
     implementation 'org.codehaus.groovy:groovy-all:2.5.22'
     testImplementation platform('org.junit:junit-bom:5.10.0')
