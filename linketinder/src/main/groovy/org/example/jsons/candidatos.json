@@ -1,0 +1,67 @@
+[
+    {
+        "nome": "Laranjinha",
+        "cpf": "000-000-002-00",
+        "idade": "25",
+        "Pais": "Brasil",
+        "cep": "111-111",
+        "descricao": "Tenho interesse em desenvolvimento web e programacao funcional",
+        "habilidades": [
+            "Groovy",
+            "Java",
+            "Spring"
+        ]
+    },
+    {
+        "nome": "MacaVerde",
+        "cpf": "000-000-003-00",
+        "idade": "19",
+        "Pais": "Brasil",
+        "cep": "222-222",
+        "descricao": "Gosto de criar aplicacoes e aprender novas linguagens",
+        "habilidades": [
+            "Python",
+            "Django",
+            "SQL"
+        ]
+    },
+    {
+        "nome": "Bananao",
+        "cpf": "000-000-004-00",
+        "idade": "31",
+        "Pais": "Portugal",
+        "cep": "333-333",
+        "descricao": "Trabalho com desenvolvimento de sistemas e automacao",
+        "habilidades": [
+            "Java",
+            "Docker",
+            "PostgreSQL"
+        ]
+    },
+    {
+        "nome": "Uvinha",
+        "cpf": "000-000-005-00",
+        "idade": "28",
+        "Pais": "Argentina",
+        "cep": "444-444",
+        "descricao": "Sou apaixonado por desenvolvimento de jogos e computacao grafica",
+        "habilidades": [
+            "C++",
+            "OpenGL",
+            "Unity"
+        ]
+    },
+    {
+        "nome": "MangaMadura",
+        "cpf": "000-000-006-00",
+        "idade": "23",
+        "Pais": "Brasil",
+        "cep": "555-555",
+        "descricao": "Gosto de desenvolvimento backend e construcao de APIs",
+        "habilidades": [
+            "Ruby",
+            "Ruby On Rails",
+            "PostgreSQL"
+        ]
+    }
+]
