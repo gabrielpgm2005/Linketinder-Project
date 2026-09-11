@@ -1,68 +1,63 @@
 [
     {
-        "nome": "TechNova",
-        "email": "contato@technova.com",
-        "cnpj": "12.345.678/0001-90",
-        "pais": "Brasil",
-        "estado": "RJ",
-        "cep": "28000-000",
-        "descricao": "Empresa especializada no desenvolvimento de sistemas web e solucoes para empresas.",
+        "nome": "Laranjinha",
+        "cpf": "000-000-002-00",
+        "idade": "25",
+        "Pais": "Brasil",
+        "cep": "111-111",
+        "descricao": "Tenho interesse em desenvolvimento web e programacao funcional",
         "competenciasQueBuscam": [
+            "Groovy",
             "Java",
-            "Spring Boot",
+            "Spring"
+        ]
+    },
+    {
+        "nome": "MacaVerde",
+        "cpf": "000-000-003-00",
+        "idade": "19",
+        "Pais": "Brasil",
+        "cep": "222-222",
+        "descricao": "Gosto de criar aplicacoes e aprender novas linguagens",
+        "competenciasQueBuscam": [
+            "Python",
+            "Django",
             "SQL"
         ]
     },
     {
-        "nome": "CodeWave",
-        "email": "rh@codewave.com",
-        "cnpj": "23.456.789/0001-01",
-        "pais": "Brasil",
-        "estado": "SP",
-        "cep": "01000-000",
-        "descricao": "Startup focada na criacao de plataformas digitais e aplicacoes modernas.",
+        "nome": "Bananao",
+        "cpf": "000-000-004-00",
+        "idade": "31",
+        "Pais": "Portugal",
+        "cep": "333-333",
+        "descricao": "Trabalho com desenvolvimento de sistemas e automacao",
         "competenciasQueBuscam": [
-            "JavaScript",
-            "React",
-            "Node.js"
-        ]
-    },
-    {
-        "nome": "ByteWorks",
-        "email": "vagas@byteworks.com",
-        "cnpj": "34.567.890/0001-12",
-        "pais": "Brasil",
-        "estado": "MG",
-        "cep": "30000-000",
-        "descricao": "Empresa de tecnologia voltada para desenvolvimento de software e analise de dados.",
-        "competenciasQueBuscam": [
-            "Python",
-            "Django",
+            "Java",
+            "Docker",
             "PostgreSQL"
         ]
     },
     {
-        "nome": "GlobalSoft",
-        "email": "careers@globalsoft.com",
-        "cnpj": "45.678.901/0001-23",
-        "pais": "Portugal",
-        "estado": "Lisboa",
-        "cep": "1000-001",
-        "descricao": "Empresa internacional especializada em solucoes corporativas e computacao em nuvem.",
+        "nome": "Uvinha",
+        "cpf": "000-000-005-00",
+        "idade": "28",
+        "Pais": "Argentina",
+        "cep": "444-444",
+        "descricao": "Sou apaixonado por desenvolvimento de jogos e computacao grafica",
         "competenciasQueBuscam": [
-            "C#",
-            " .NET",
-            "Azure"
+            "C++",
+            "OpenGL",
+            "Unity"
         ]
     },
     {
-        "nome": "RubyLabs",
-        "email": "talentos@rubylabs.com",
-        "cnpj": "56.789.012/0001-34",
-        "pais": "Brasil",
-        "estado": "PR",
-        "cep": "80000-000",
-        "descricao": "Empresa especializada em desenvolvimento web utilizando tecnologias modernas.",
+        "nome": "MangaMadura",
+        "cpf": "000-000-006-00",
+        "idade": "23",
+        "Pais": "Brasil",
+        "cep": "555-555",
+        "descricao": "Gosto de desenvolvimento backend e construcao de APIs",
         "competenciasQueBuscam": [
             "Ruby",
             "Ruby On Rails",
@@ -70,45 +65,46 @@
         ]
     },
     {
-        "nome": "NextGen Systems",
-        "email": "recrutamento@nextgen.com",
-        "cnpj": "67.890.123/0001-45",
-        "pais": "Argentina",
-        "estado": "Buenos Aires",
-        "cep": "C1000",
-        "descricao": "Empresa focada em inteligencia artificial, automacao e desenvolvimento de sistemas.",
+        "nome": "Daniel",
+        "cpf": "676767",
+        "idade": "19",
+        "pais": "Bangladesh",
+        "cep": "11",
+        "descricao": "Programador Try Hard",
         "competenciasQueBuscam": [
-            "Python",
-            "Machine Learning",
-            "Docker"
+            "Vibecoder",
+            "Ruby",
+            "C",
+            "Java",
+            "Amigo de Tang",
+            "Amigo do claudio e do geminilson"
         ]
     },
     {
-        "nome": "ErisTech",
-        "email": "ErisTech@pipipopopo.com",
-        "cnpj": "122",
-        "pais": "Nova MIllis",
-        "estado": "Arizona",
-        "cep": "000-000",
-        "descricao": "Empresa focada no Desenvolvimento de Software para Shows de televis\u00e3o",
+        "nome": "Gabriel",
+        "cpf": "222",
+        "idade": "21",
+        "pais": "BrasilianRepublic",
+        "cep": "1",
+        "descricao": "programador",
         "competenciasQueBuscam": [
-            " C",
-            "C++",
-            "Assembly",
-            "RISC-V",
-            "Rust"
+            "java",
+            "c",
+            "assembly"
         ]
     },
     {
-        "nome": "Bet Betoneira",
-        "email": "",
-        "cnpj": "22",
-        "pais": "Brasil",
-        "estado": "a",
-        "cep": "a",
-        "descricao": "a",
+        "nome": "Luiz",
+        "cpf": "1",
+        "idade": "1",
+        "pais": "1",
+        "cep": "1",
+        "descricao": "ababa",
         "competenciasQueBuscam": [
-            "a"
+            "Claude Code",
+            "Groovy",
+            "Java",
+            "Gradle"
         ]
     }
 ]

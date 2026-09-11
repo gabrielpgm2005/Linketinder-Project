@@ -1,0 +1,37 @@
+[
+    {
+        "pessoaIntereda": "GlobalSoft",
+        "pessoaDeInteresse": "Laranjinha",
+        "status": "em match"
+    },
+    {
+        "pessoaInteressada": "TechNova",
+        "pessoaDeInteresse": "Bananao",
+        "status": "em match"
+    },
+    {
+        "pessoaInteressada": "MacaVerde",
+        "pessoaDeInteresse": "ByteWorks",
+        "status": "aguardando"
+    },
+    {
+        "pessoaInteressada": "MacaVerde",
+        "pessoaDeInteresse": "NextGen Systems",
+        "status": "aguardando"
+    },
+    {
+        "pessoaInteressada": "Bananao",
+        "pessoaDeInteresse": "ByteWorks",
+        "status": "aguardando"
+    },
+    {
+        "pessoaInteressada": "Bananao",
+        "pessoaDeInteresse": "GlobalSoft",
+        "status": "aguardando"
+    },
+    {
+        "pessoaInteressada": "TechNova",
+        "pessoaDeInteresse": "Daniel",
+        "status": "em match"
+    }
+]

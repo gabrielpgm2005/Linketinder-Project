@@ -19,10 +19,8 @@ tasks.named('run') {
 }
 
 dependencies {
-    implementation 'org.codehaus.groovy:groovy-all:2.5.22'
-    testImplementation platform('org.junit:junit-bom:5.10.0')
-    testImplementation 'org.junit.jupiter:junit-jupiter'
-    testRuntimeOnly 'org.junit.platform:junit-platform-launcher'
+    implementation 'org.codehaus.groovy:groovy-all:2.5.23'
+    testImplementation 'org.spockframework:spock-core:2.4-groovy-2.5'
 }
 
 test {
