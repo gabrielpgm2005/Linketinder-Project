@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <button id="listarVagas"> Listar vagas</button>
+    <button id="deletarCandidato"> Deletar conta</button>
+    <button onclick="
+    localStorage.removeItem('usuarioLogado');
+    window.location.href = '../index.html';
+    ">Sair</button>
+    <table id="tableVagas" style="display: none"></table>
+    <script type="module" src="../main.js"></script>
+</body>
+</html>

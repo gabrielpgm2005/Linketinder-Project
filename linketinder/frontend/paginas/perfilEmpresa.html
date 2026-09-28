@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <button id="listarCandidatos">Listar Candidatos</button>
+    <button id="graficoCompetencias">
+        Grafico por competencias
+    </button>
+    <canvas id="grafico"></canvas>
+    <button onclick="
+    localStorage.removeItem('usuarioLogado');
+    window.location.href = '../index.html';
+    ">Sair</button>
+    <button id="removerEmpresa">Deletar perfil</button>
+    <div id="listaCandidatos"></div>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script type="module" src="../main.js"></script>
+</body>
+</html>

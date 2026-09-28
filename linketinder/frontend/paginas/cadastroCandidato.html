@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <title>Cadastro de candidato</title>
+</head>
+
+<body>
+
+<h1>Venha encontrar as melhores vagas!</h1>
+
+<p>Entre com o seu nome</p>
+
+<label for="inputNomeCandidato">
+    <input type="text" id="inputNomeCandidato">
+</label>
+
+<button id="logarCandidato">
+    Já tenho uma conta (login)
+</button>
+
+<button
+        id="registrarCandidato"
+        onclick="document.getElementById('candidatoForm').style.display = 'block'">
+    Não tenho uma conta (registrar)
+</button>
+
+
+<form id="candidatoForm" style="display: none">
+
+    <label for="nomeCandidatoRegistro">
+        Nome:
+    </label>
+
+    <input
+            type="text"
+            id="nomeCandidatoRegistro"
+            name="nomeCandidatoRegistro"
+            placeholder="Digite seu nome"
+            required
+    >
+
+    <br><br>
+
+
+    <label for="cpfCandidatoRegistro">
+        CPF:
+    </label>
+
+    <input
+            type="text"
+            id="cpfCandidatoRegistro"
+            name="cpf"
+            placeholder="000.000.000-00"
+            maxlength="14"
+            required
+    >
+
+    <br><br>
+
+
+    <label for="idadeCandidatoRegistro">
+        Idade:
+    </label>
+
+    <input
+            type="number"
+            id="idadeCandidatoRegistro"
+            name="idade"
+            min="0"
+            max="150"
+            required
+    >
+
+    <br><br>
+
+
+    <label for="paisCandidatoRegistro">
+        País:
+    </label>
+
+    <select
+            id="paisCandidatoRegistro"
+            name="pais"
+            required
+    >
+        <option value="">
+            Selecione um país
+        </option>
+
+        <option value="Brasil">
+            Brasil
+        </option>
+
+        <option value="Argentina">
+            Argentina
+        </option>
+
+        <option value="Chile">
+            Chile
+        </option>
+
+        <option value="Portugal">
+            Portugal
+        </option>
+
+        <option value="Estados Unidos">
+            Estados Unidos
+        </option>
+
+        <option value="Outro">
+            Outro
+        </option>
+    </select>
+
+    <br><br>
+
+
+    <label for="cepCandidatoRegistro">
+        CEP:
+    </label>
+
+    <input
+            type="text"
+            id="cepCandidatoRegistro"
+            name="cep"
+            placeholder="00000-000"
+            maxlength="9"
+            required
+    >
+
+    <br><br>
+
+
+    <label for="descricaoCandidatoRegistro">
+        Descrição:
+    </label>
+
+    <br>
+
+    <textarea
+            id="descricaoCandidatoRegistro"
+            name="descricao"
+            rows="5"
+            cols="50"
+            placeholder="Fale um pouco sobre você..."
+            required
+    ></textarea>
+
+    <br><br>
+
+
+    <label for="competenciasCandidatoRegistro">
+        Competências:
+    </label>
+
+    <input
+            type="text"
+            id="competenciasCandidatoRegistro"
+            name="competencias"
+            placeholder="java, typeScript, c, git"
+            required
+    >
+
+    <small>
+        Separe as competências por vírgula.
+    </small>
+
+    <br><br>
+
+
+    <label for="formacaoCandidatoRegistro">
+        Formação:
+    </label>
+
+    <input
+            type="text"
+            id="formacaoCandidatoRegistro"
+            name="formacao"
+            placeholder="Ciência da Computação"
+            required
+    >
+
+    <br><br>
+
+
+    <button
+            type="button"
+            id="salvarCandidato">
+        Salvar
+    </button>
+
+</form>
+
+
+<script type="module" src="../main.js"></script>
+
+</body>
+</html>

@@ -1,0 +1,66 @@
+
+Candidato curte uma vaga
+
+Um objeto curtida recebe como parâmetro o candidato
+
+Empresa curte candidato
+
+Um objeto curtida recebe como parâmetro a empresa 
+
+
+Dessa forma é possivel identificar que rolou um match
+
+==============================================================
+
+Mudanças a serem feitas:
+
+	-> Adicionar um campo de interessados em cada Pessoa
+
+Como vai funcionar:
+
+	Perguntar na entrada se é empresa ou candidato	
+	Perguntar o nome da pessoa
+	-> Se não existir, exibir um erro e voltar ao menu
+	
+	Ambos vão ter uma opção abrir feed
+
+	-> Filtrar na lista do outro tipo de pessoa
+	Quais tem habilidades que dão match 
+
+	(Excluir as pessoas que já está na lista de interessado)
+
+	-> Cada proposta que aparecer Terá como escolher
+	se quer curtir ou passar
+	-> Se curtir, a pessoa que curte é adicionada a lista
+de pessoas interessadas 	
+
+	-> Ao se curtir tem 2 opções:
+	Se a pessoa curtida tem a pessoa que curte na lista de
+interessados, Avisar que ocorreu um match
+		
+==============================================================
+Outra opcao:
+	=> Lista de Objetos curtida
+	=> Sempre ao se curtir alguem um objeto curtida é criado
+	=> O objeto funciona da seguinte forma:
+guarda o nome de quem curtiu, e o nome de quem a pessoa curtiu
+-> Tem os pssiveis status: Aguardando, Rejeitado e Completo
+
+Ao iniciar a aplicação:
+	=> Se a pessoa tem o nome em um objeto aguardando
+deve ser o primeiro a ser exibido
+	=> Atualizar o objeto, se der como validado avisar o 
+match e exibir informações completas da outra pessoa
+	=> Se rejeitar: Excluir o objeto
+após isso filtar por pessoas com habilidades / interesses
+que são iguais
+
+exibir as habilidades que são iguais em ambos
+
+ter a opção de curtir ou passar
+
+se curtir -> Um objeto curtida é criado
+
+quando encerrar o programa -> Salvar todos objetos num arquivo
+json
+

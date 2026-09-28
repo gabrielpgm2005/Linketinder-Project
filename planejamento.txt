@@ -1,0 +1,76 @@
+Array de Candidatos (minimo de 5 candidatos pré cadastrados)
+-> Cada candidato tem que ter Nome, E-mail,CPF,idade,Estado
+CEP,Descrição Pessoal,Array de competencias que podem ser 
+pré definidas
+
+Array de Empresas -> minimo de 5 empresas pré cadastradas
+-> Nome,E-mail corporativo, CNPJ, País, Estado, CEP e Descrição
+da empresa
+-> Atributo competencias 
+
+-> Menu simples no terminal, com opção de listar todas as
+empresas e candidatos
+
+->Implementar a funcionalidade de cadastro de novos candidatos
+ou empresas
+
+-> Crie uma classe pessoa, que implementa uma interface pessoa
+contendo os métdos obrigatórios para os perfis de candidato
+e empresa, para cada tipo de pessoa, estenda essa classe para
+manter sempre os atributos gerais
+
+-> Reproduzir um mvp simples
+
+=================================================================
+
+Candidato:
+Nome,E-mail,CPF,idadem,País,Estado,CEP,descrição pessoal
+,competências
+
+Empresa:
+Nome,E-mail Corporativo,CNPJ,País,Estado,CEP,decrição,
+competências
+
+Oque tem em comum: Nome,E-mail,País,Estado,CEP,descrição
+,competências
+
+Especial de Candidato->CPF,idade
+Especial de Empresa-> CNPJ
+==============================================================
+Como deve funcionar agora:
+Perguntar se é candidato ou empresa
+mostrar a interface especifica para cada um
+
+Para candidato e Empresa:
+Perguntar Nome-> Se existir: Continua normal
+Se não existir-> Criar novo funcionario pedindo para preencher
+todos os campos, depois salvando novamente no Array
+
+Para candidato e empresa ->
+                           Atualizar algum campo
+                           Listar todas as empresas
+Listar o tipo de pessoas interessadas nas habilidades
+==============================================================
+
+Eu quero ter 2 Arquivos Json, um para Candidatos, outro para empresas
+Vamos guardar nos arquivos json todos atributos para cada
+Quando a aplicação rodar -> Vai ler todo o json e botar num objeto
+cada objeto vai ser colocado em um Array, ou um de candidato ou um
+de empresas
+(PESQUISAR COMO FAZER ISSO)
+
+===============================================================
+Resumo para o ZG-HERO PROJECT:
+
+Ler 2 arquivos json e preencher um array
+com os campos especificados
+
+os campos são classes, ou candidato ou empresa, que extendem uma classe
+Pessoa, que implementa uma interface Pessoa
+
+Implementar opção de cadastrar novos candidatos ou empresas (ou remover)
+
+Ao final do programa -> Reescrever o arquivo json para cada um
+
+
+

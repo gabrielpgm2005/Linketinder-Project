@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <title>Cadastro de empresa</title>
+</head>
+<body>
+
+<h1>Venha encontrar os melhores profissionais!</h1>
+
+<p>Entre com o nome da empresa</p>
+
+<label for="inputNomeEmpresa">
+    <input type="text" id="inputNomeEmpresa">
+</label>
+
+<button id="logarEmpresa">
+    Já tenho uma conta (login)
+</button>
+
+<button
+        id="registrarEmpresa"
+        onclick="document.getElementById('empresaForm').style.display = 'block'">
+    Não tenho uma conta (registrar)
+</button>
+
+<form id="empresaForm" style="display: none">
+
+    <label for="nomeEmpresaRegistro">Nome:</label>
+    <input
+            type="text"
+            id="nomeEmpresaRegistro"
+            name="nomeEmpresaRegistro"
+            placeholder="Digite o nome da empresa"
+            required
+    >
+    <br><br>
+
+    <label for="emailEmpresaRegistro">E-mail:</label>
+    <input
+            type="email"
+            id="emailEmpresaRegistro"
+            name="email"
+            placeholder="empresa@email.com"
+            required
+    >
+    <br><br>
+
+    <label for="cnpjEmpresaRegistro">CNPJ:</label>
+    <input
+            type="text"
+            id="cnpjEmpresaRegistro"
+            name="cnpj"
+            placeholder="00.000.000/0000-00"
+            maxlength="18"
+            required
+    >
+    <br><br>
+
+    <label for="paisEmpresaRegistro">País:</label>
+    <select id="paisEmpresaRegistro" name="pais" required>
+        <option value="">Selecione um país</option>
+        <option value="Brasil">Brasil</option>
+        <option value="Argentina">Argentina</option>
+        <option value="Chile">Chile</option>
+        <option value="Portugal">Portugal</option>
+        <option value="Estados Unidos">Estados Unidos</option>
+        <option value="Outro">Outro</option>
+    </select>
+    <br><br>
+
+    <label for="estadoEmpresaRegistro">Estado:</label>
+    <select id="estadoEmpresaRegistro" name="estado" required>
+        <option value="">Selecione um estado</option>
+        <option value="NONE">Fora Do Brasil</option>
+        <option value="AC">Acre</option>
+        <option value="AL">Alagoas</option>
+        <option value="AP">Amapá</option>
+        <option value="AM">Amazonas</option>
+        <option value="BA">Bahia</option>
+        <option value="CE">Ceará</option>
+        <option value="DF">Distrito Federal</option>
+        <option value="ES">Espírito Santo</option>
+        <option value="GO">Goiás</option>
+        <option value="MA">Maranhão</option>
+        <option value="MT">Mato Grosso</option>
+        <option value="MS">Mato Grosso do Sul</option>
+        <option value="MG">Minas Gerais</option>
+        <option value="PA">Pará</option>
+        <option value="PB">Paraíba</option>
+        <option value="PR">Paraná</option>
+        <option value="PE">Pernambuco</option>
+        <option value="PI">Piauí</option>
+        <option value="RJ">Rio de Janeiro</option>
+        <option value="RN">Rio Grande do Norte</option>
+        <option value="RS">Rio Grande do Sul</option>
+        <option value="RO">Rondônia</option>
+        <option value="RR">Roraima</option>
+        <option value="SC">Santa Catarina</option>
+        <option value="SP">São Paulo</option>
+        <option value="SE">Sergipe</option>
+        <option value="TO">Tocantins</option>
+    </select>
+    <br><br>
+
+    <label for="cepEmpresaRegistro">CEP:</label>
+    <input
+            type="text"
+            id="cepEmpresaRegistro"
+            name="cep"
+            placeholder="00000-000"
+            maxlength="9"
+            required
+    >
+    <br><br>
+
+    <label for="descricaoEmpresaRegistro">Descrição:</label>
+    <br>
+    <textarea
+            id="descricaoEmpresaRegistro"
+            name="descricao"
+            rows="5"
+            cols="50"
+            placeholder="Fale um pouco sobre a empresa..."
+            required
+    ></textarea>
+    <br><br>
+
+    <label for="competenciasEmpresaRegistro">Competências:</label>
+    <input
+            type="text"
+            id="competenciasEmpresaRegistro"
+            name="competencias"
+            placeholder="java, typeScript, c, git"
+            required
+    >
+
+    <small>Separe as competências por vírgula.</small>
+
+    <br><br>
+
+    <button type="button" id="salvarEmpresa">
+        Salvar
+    </button>
+
+</form>
+
+<script type="module" src="../main.js"></script>
+
+</body>
+</html>
