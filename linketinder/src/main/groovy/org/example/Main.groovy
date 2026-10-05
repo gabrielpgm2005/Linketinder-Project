@@ -2,12 +2,17 @@ package org.example
 
 import groovy.json.JsonBuilder
 import groovy.json.JsonSlurper
+import org.example.dao.EmpresaDAO
+import org.example.dao.SqlCandidatoDAO
+import org.example.dao.SqlEmpresaDAO
+import org.example.dao.SqlVagaDAO
+import org.example.model.Candidato
+import org.example.model.Empresa
+import org.example.model.Vaga
 
-ArrayList candidatos = new JsonSlurper().parse(new File("/home/gabriel/acelera/Linketinder-Project/linketinder/src/main/groovy/org/example/jsons/candidatos.json")) as ArrayList
-ArrayList empresas = new JsonSlurper().parse(new File("/home/gabriel/acelera/Linketinder-Project/linketinder/src/main/groovy/org/example/jsons/empresas.json")) as ArrayList
-ArrayList curtidas = new JsonSlurper().parse(new File("/home/gabriel/acelera/Linketinder-Project/linketinder/src/main/groovy/org/example/jsons/curtidas.json")) as ArrayList
-Map<String,Object> pessoaLogada = null
-ArrayList<Map<String,String>> possiveisInteressados = null
+def candidatoDB = new SqlCandidatoDAO()
+def empresaDB = new SqlEmpresaDAO()
+def pessoaLogada = null
 String resposta = "s"
 Scanner scanner = new Scanner(System.in)
 
@@ -19,45 +24,62 @@ while(!resposta.equals("q")){
     println "Digite 4 se deseja adicionar um novo candidato"
     println "Digite 5 se deseja logar como Candidato"
     println "Digite 6 se deseja logar como Empresa"
-    println "Digite 7 se deseja rolar o feed (Você precisa estar logado)"
+    println "Digite 7 se deseja Adicionar uma vaga (Apenas se já estiver logado como empresa)"
+    println "Digite 8 se deseja buscar vagas (Apenas disponivel se já estiver logado como candidato)"
+    println "Digite 9 se deseja buscar candidatos (Apenas disponivel se já estiver logado como empresa)"
+    //println "Digite 7 se deseja rolar o feed (Você precisa estar logado)"
     println "Digite q se quiser encerrar o programa"
     resposta = scanner.nextLine()
 
     switch (resposta){
         case "1":
-            Empresas.display(empresas)
+            Empresas.display(empresaDB.getAllEmpresas())
             break
 
         case "2":
-            Candidatos.display(candidatos)
+            Candidatos.display(candidatoDB.getAllCandidatos())
             break
 
         case "3":
-            Empresas.adicionarEmpresa(empresas,scanner)
+            Empresas.adicionarEmpresa(empresaDB,scanner)
             break
 
         case "4":
-            Candidatos.adicionarCandidato(candidatos,scanner)
+            Candidatos.adicionarCandidato(candidatoDB,scanner)
             break
 
         case "5":
-            pessoaLogada = Pessoas.logar(candidatos,scanner)
-            possiveisInteressados = empresas
+            pessoaLogada = Candidatos.logar(candidatoDB,scanner)
             break
 
         case "6":
-            pessoaLogada = Pessoas.logar(empresas,scanner)
-            possiveisInteressados = candidatos
+            pessoaLogada = Empresas.logar(empresaDB,scanner)
             break
 
         case "7":
-            CurtidasManager.feed(pessoaLogada,possiveisInteressados,curtidas,scanner)
+            if(pessoaLogada.getClass() != Empresa){
+                break
+            }
+            Empresas.adicionarVaga(pessoaLogada as Empresa,scanner)
+            break
+
+        case "8":
+            if(pessoaLogada.getClass() != Candidato){
+                break
+            }
+            Vaga[] vagas = new SqlVagaDAO().getAllVagas()
+            Candidatos.buscarVaga(pessoaLogada as Candidato,vagas,scanner)
+            break
+
+        case "9":
+            if(pessoaLogada.getClass() != Empresa){
+                break
+            }
+            Candidato[] candidatos = candidatoDB.getAllCandidatos()
+            Empresas.buscarCandidatos(pessoaLogada as Empresa,candidatos,scanner)
             break
 
         case "q":
-            new File("/home/gabriel/acelera/Linketinder-Project/linketinder/src/main/groovy/org/example/jsons/candidatos.json").text = new JsonBuilder(candidatos).toPrettyString()
-            new File("/home/gabriel/acelera/Linketinder-Project/linketinder/src/main/groovy/org/example/jsons/empresas.json").text = new JsonBuilder(empresas).toPrettyString()
-            CurtidasManager.atualizarArquivo("/home/gabriel/acelera/Linketinder-Project/linketinder/src/main/groovy/org/example/jsons/curtidas.json",curtidas)
             break
 
         default:

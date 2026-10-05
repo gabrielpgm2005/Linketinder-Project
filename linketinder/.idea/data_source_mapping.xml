@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="DataSourcePerFileMappings">
+    <file url="file://$PROJECT_DIR$/src/main/groovy/org/example/dao/SqlCandidatoCompetenciaDAO.groovy" value="5e7c66ed-ebc0-4bd5-bded-33a029d7bfc8" />
+    <file url="file://$PROJECT_DIR$/src/main/groovy/org/example/dao/SqlCandidatoDAO.groovy" value="5e7c66ed-ebc0-4bd5-bded-33a029d7bfc8" />
+    <file url="file://$PROJECT_DIR$/src/main/groovy/org/example/dao/SqlCompetenciaDAO.groovy" value="5e7c66ed-ebc0-4bd5-bded-33a029d7bfc8" />
+    <file url="file://$PROJECT_DIR$/src/main/groovy/org/example/dao/SqlCurtidaDAO.groovy" value="5e7c66ed-ebc0-4bd5-bded-33a029d7bfc8" />
+    <file url="file://$PROJECT_DIR$/src/main/groovy/org/example/dao/SqlEmpresaDAO.groovy" value="5e7c66ed-ebc0-4bd5-bded-33a029d7bfc8" />
+    <file url="file://$PROJECT_DIR$/src/main/groovy/org/example/dao/SqlVagaCompetenciaDAO.groovy" value="5e7c66ed-ebc0-4bd5-bded-33a029d7bfc8" />
+    <file url="file://$PROJECT_DIR$/src/main/groovy/org/example/dao/SqlVagaDAO.groovy" value="5e7c66ed-ebc0-4bd5-bded-33a029d7bfc8" />
+  </component>
+</project>

@@ -2,7 +2,6 @@ package org.example
 
 class Pessoas{
 
-    //TODO: Adicionar o programa para ler do arquivo e sobreescrever do arquivo
     static void display(List pessoas){
         pessoas.each {
             pessoa ->
