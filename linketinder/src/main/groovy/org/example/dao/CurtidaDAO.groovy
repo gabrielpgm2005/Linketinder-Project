@@ -8,19 +8,16 @@ interface CurtidaDAO {
 
     Curtida findCurtidaById(int id)
 
-    void insertCurtida(Curtida curtida)
+    void insertCurtida(int candidatoId,int empresaId,boolean candidatoCurtiu,boolean empresaCurtiu)
+
+    Curtida getCurtidaObject(int candidatoId,int empresaId)
 
     void deleteCurtida(int id)
 
     void updateCurtida(Curtida curtida)
 
-    boolean curtidaVagaAlreadyExists(int idCandidato, int idVaga)
+    boolean candidatoAlreadyLikedEmpresa(int candidatoId,int empresaId)
 
-    boolean curtidaEmpresaAlreadyExists(int idEmpresa, int idCandidato)
+    boolean empresaAlreadyLikedCandidato(int candidatoId, int empresaId)
 
-    void updateCurtidaCandidato(int idVaga, int idCandidato, boolean status)
-
-    void updateCurtidaEmpresa(int idEmpresa, int idCandidato, boolean status)
-
-    void insertCurtidaEmpresa(int idEmpresa, int idCandidato, boolean status)
 }

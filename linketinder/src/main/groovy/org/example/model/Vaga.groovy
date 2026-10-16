@@ -1,12 +1,12 @@
 package org.example.model
 
-public class Vaga {
+class Vaga {
     private int id;
     private int idEmpresa;
     private String nome;
     private String descricao;
     private String local;
-    private String[] competencias;
+    private List<String> competencias = new LinkedList<String>();
 
     int getId() {
         return id
@@ -48,12 +48,22 @@ public class Vaga {
         this.local = local
     }
 
-    String[] getCompetencias() {
+    List<String> getCompetencias() {
         return competencias
     }
 
-    void setCompetencias(String[] competencias) {
+    void setCompetencias(List<String> competencias) {
         this.competencias = competencias
+    }
+    void adicionarCompetencia(String competencia){
+        this.competencias.add(competencia)
+    }
+
+    void mostrarVagaAsCegas(){
+        println "nome da vaga: ${this.nome}"
+        println "Descrição: ${this.descricao}"
+        println "local: ${this.local}"
+        println "Competencias: ${this.competencias}"
     }
 }
 

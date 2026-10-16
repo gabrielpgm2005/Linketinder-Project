@@ -32,20 +32,18 @@ class SqlCompetenciaDAO implements CompetenciaDAO{
     }
 
     @Override
-    void insertCompetencia(Competencia competencia) {
-        def params = [
-                competencia.getCompetencia()
-        ]
+    void insertCompetencia(String competenciaStr) {
+
         sql.execute("""
             INSERT INTO competencias (competencia)
             VALUES (?)
             ON CONFLICT (competencia) DO NOTHING
-        """,params)
+        """,competenciaStr)
     }
 
     @Override
     void deleteCompetencia(int id) {
-        sql.execute("DELETE FROM competencias WHERE id_competencia =?",id)
+        sql.execute("DELETE FROM competencias WHERE id_competencia = ?",id)
 
     }
 
@@ -70,6 +68,17 @@ class SqlCompetenciaDAO implements CompetenciaDAO{
         )
 
         return row.id_competencia
+    }
+
+    @Override
+    boolean competenciaExists(int idCompetencia){
+        sql.execute("""
+        SELECT EXISTS (
+            SELECT 1 
+            FROM competencias 
+            WHERE id_competencia = ?
+        );
+        """,idCompetencia)
     }
 
 

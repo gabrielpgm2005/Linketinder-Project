@@ -1,7 +1,10 @@
 package org.example.model;
-import java.util.Arrays;
 
-public class Candidato {
+import org.example.dao.CandidatoDAO;
+import org.example.dao.CurtidaDAO;
+
+
+class Candidato {
 
     private int id;
     private String nome;
@@ -13,7 +16,7 @@ public class Candidato {
     private String cep;
     private String descricao;
     private String Senha;
-    private String[] competencias;
+    private List <String> competencias = new LinkedList<String>();
 
     int getId() {
         return id;
@@ -87,12 +90,16 @@ public class Candidato {
         this.descricao = descricao;
     }
 
-    String[] getCompetencias() {
+    List<String> getCompetencias() {
         return competencias;
     }
 
-    void setCompetencias(String[] competencias) {
+    void setCompetencias(List<String> competencias) {
         this.competencias = competencias;
+    }
+
+    void adicionarCompetencia(String competencia){
+        this.competencias.add(competencia);
     }
 
     String getSenha() {
@@ -103,9 +110,25 @@ public class Candidato {
         Senha = senha;
     }
 
+    void procurarVaga(List<Vaga> vagas, Scanner scanner, CurtidaDAO curtidaDB, CandidatoDAO candidatoDB) {
+        for (vaga in vagas){
+            vaga.mostrarVagaAsCegas()
+            print "Digite 's' se deseja curtir a vaga, e 'n' se não: "
+            String resposta = scanner.nextLine().toLowerCase()
+            if(resposta == "s"){
+                candidatoDB.salvarCurtidaDoCandidato(this,vaga,curtidaDB)
+            }
+        }
+    }
+
+    void mostrarCandidatoAsCegas(){
+        println "Descrição do candidato: ${this.descricao}"
+        println "Competencias: ${this.competencias}"
+    }
+
 
     @Override
-    public String toString() {
+    String toString() {
         return "Candidato{" +
                 "id=" + id +
                 ", nome='" + nome + '\'' +

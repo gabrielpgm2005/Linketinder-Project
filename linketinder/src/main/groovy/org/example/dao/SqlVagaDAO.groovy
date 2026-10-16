@@ -2,7 +2,6 @@ package org.example.dao
 
 import groovy.sql.GroovyRowResult
 import groovy.sql.Sql
-import org.example.model.Candidato
 import org.example.model.Vaga
 
 class SqlVagaDAO implements VagaDAO{
@@ -18,9 +17,18 @@ class SqlVagaDAO implements VagaDAO{
         sql.rows("SELECT * FROM dados_vagas").collect({ row ->
             Vaga vaga = new Vaga()
             vaga.setId(row.id_vaga)
+            vaga.setNome(row.nome)
             vaga.setIdEmpresa(row.id_empresa)
             vaga.setDescricao(row.descricao)
             vaga.setLocal(row.local)
+            vaga.setCompetencias(sql.rows("""
+                SELECT c.competencia
+                FROM competencias c
+                JOIN vagas_competencias vc
+                    ON c.id_competencia = vc.id_competencia
+                WHERE vc.id_vaga = ?
+            """, [row.id_vaga]).collect { it.competencia })
+
             vaga
         })
     }
@@ -30,7 +38,7 @@ class SqlVagaDAO implements VagaDAO{
         GroovyRowResult row = sql.firstRow("SELECT * FROM dados_vagas WHERE id_vaga=?",id)
         Vaga vaga = new Vaga()
         vaga.setId(row.id_vaga)
-        vaga.setEmpresa(row.id_empresa)
+        vaga.setIdEmpresa(row.id_empresa)
         vaga.setDescricao(row.descricao)
         vaga.setLocal(row.local)
         vaga
@@ -62,7 +70,7 @@ class SqlVagaDAO implements VagaDAO{
 
     void updateVaga(Vaga vaga){
         def params = [
-                vaga.getEmpresa(),
+                vaga.getIdEmpresa(),
                 vaga.getNome(),
                 vaga.getDescricao(),
                 vaga.getLocal(),
@@ -78,5 +86,26 @@ class SqlVagaDAO implements VagaDAO{
         WHERE id_vaga=?
         
         """,params)
+    }
+
+    @Override
+    void salvarCompetenciasDaVagaNoBD(Vaga vaga,CompetenciaDAO competenciaDB) {
+        List <String> listaCompetenciasStr = vaga.competencias
+        SqlVagaCompetenciaDAO sqlVagaCompetenciaDAO = new SqlVagaCompetenciaDAO()
+        listaCompetenciasStr.forEach { it ->
+            sqlVagaCompetenciaDAO.insert(
+                    vaga.id,
+                    competenciaDB.findCompetenciaId(it)
+            )
+        }
+    }
+
+    @Override
+    int getIdAntesDeSalvarNoBd() {
+        sql.firstRow("""
+        SELECT nextval(
+            pg_get_serial_sequence('dados_vagas', 'id_vaga')
+        ) AS id
+    """).id
     }
 }

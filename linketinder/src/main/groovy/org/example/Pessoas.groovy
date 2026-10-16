@@ -27,6 +27,12 @@ class Pessoas{
         return pessoaLogada
     }
 
+    static String[] pegarCompetenciasDoUsuario(Scanner scanner){
+        println "Entre com as competencias que deseja adicionar (separadas por ','): "
+        String[] competenciasStr = scanner.nextLine().trim().toLowerCase().split(",")
+        competenciasStr
+    }
+
 
 }
 

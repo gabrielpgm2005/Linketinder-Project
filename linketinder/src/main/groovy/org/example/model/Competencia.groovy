@@ -1,6 +1,6 @@
 package org.example.model
 
-public class Competencia {
+class Competencia {
     private int id;
     private String competencia;
 

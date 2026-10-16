@@ -1,7 +1,8 @@
 package org.example.dao
 
-import groovy.sql.GroovyRowResult
 import groovy.sql.Sql
+import org.example.model.Candidato
+import org.example.model.Curtida
 import org.example.model.Empresa
 
 class SqlEmpresaDAO implements EmpresaDAO{
@@ -97,5 +98,20 @@ class SqlEmpresaDAO implements EmpresaDAO{
             senha = ?
         WHERE id_empresa = ?
     """, params)
+    }
+
+    @Override
+    void salvarCurtidaDaEmpresa(Empresa empresa, Candidato candidato,CurtidaDAO curtidaDB){
+        if(curtidaDB.empresaAlreadyLikedCandidato(candidato.id,empresa.id)) return
+
+        if(
+                curtidaDB.candidatoAlreadyLikedEmpresa(candidato.id,empresa.id)
+        ){
+            Curtida curtida = curtidaDB.getCurtidaObject(candidato.id,empresa.id)
+            curtida.empresa_curtiu = true
+            return
+        }
+
+        curtidaDB.insertCurtida(candidato.id,empresa.id,false,true)
     }
 }

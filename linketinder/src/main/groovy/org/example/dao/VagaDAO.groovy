@@ -8,4 +8,6 @@ interface VagaDAO {
     void insertVaga(Vaga vaga);
     void deleteVaga(int id);
     void updateVaga(Vaga vaga);
+    void salvarCompetenciasDaVagaNoBD(Vaga vaga,CompetenciaDAO competenciaDB);
+    int getIdAntesDeSalvarNoBd()
 }

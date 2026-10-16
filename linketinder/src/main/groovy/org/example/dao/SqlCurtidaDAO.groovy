@@ -14,16 +14,15 @@ class SqlCurtidaDAO implements CurtidaDAO {
 
     @Override
     List<Curtida> getAllCurtidas() {
-        sql.rows("SELECT * FROM dados_curtidas").collect { row ->
+        sql.rows("SELECT * FROM status_match").collect { row ->
 
             Curtida curtida = new Curtida()
 
-            curtida.setId(row.id_dado_curtida)
+            curtida.setId(row.id_status_match)
             curtida.setIdEmpresa(row.id_empresa)
-            curtida.setIdVaga(row.id_vaga)
             curtida.setIdCandidato(row.id_candidato)
-            curtida.setStatusCurtidaCandidato(row.status_curtida_candidato)
-            curtida.setStatusCurtidaEmpresa(row.status_curtida_empresa)
+            curtida.setCandidato_curtiu(row.candidato_curtiu)
+            curtida.setEmpresa_curtiu(row.empresa_curtiu)
 
             curtida
         }
@@ -34,47 +33,40 @@ class SqlCurtidaDAO implements CurtidaDAO {
 
         def row = sql.firstRow("""
             SELECT *
-            FROM dados_curtidas
-            WHERE id_dado_curtida = ?
+            FROM status_match
+            WHERE id_status_match = ?
         """, id)
 
         Curtida curtida = new Curtida()
 
-        curtida.setId(row.id_dado_curtida)
+        curtida.setId(row.id_status_match)
         curtida.setIdEmpresa(row.id_empresa)
-        curtida.setIdVaga(row.id_vaga)
         curtida.setIdCandidato(row.id_candidato)
-        curtida.setStatusCurtidaCandidato(row.status_curtida_candidato)
-        curtida.setStatusCurtidaEmpresa(row.status_curtida_empresa)
+        curtida.setCandidato_curtiu(row.candidato_curtiu)
+        curtida.setEmpresa_curtiu(row.empresa_curtiu)
 
         curtida
     }
 
-    /*
-     * Insere uma curtida de uma vaga.
-     *
-     * Usado pelo CANDIDATO.
-     */
+
     @Override
-    void insertCurtida(Curtida curtida) {
+    void insertCurtida(int candidatoId, int empresaId,boolean candidatoCurtiu,boolean empresaCurtiu) {
 
         def params = [
-                curtida.getIdEmpresa(),
-                curtida.getIdVaga(),
-                curtida.getIdCandidato(),
-                curtida.getStatusCurtidaEmpresa(),
-                curtida.getStatusCurtidaCandidato()
+                empresaId,
+                candidatoId,
+                empresaCurtiu,
+                candidatoCurtiu
         ]
 
         sql.execute("""
-            INSERT INTO dados_curtidas (
+            INSERT INTO status_match (
                 id_empresa,
-                id_vaga,
                 id_candidato,
-                status_curtida_empresa,
-                status_curtida_candidato
+                empresa_curtiu,
+                candidato_curtiu
             )
-            VALUES (?, ?, ?, ?, ?)
+            VALUES (?, ?, ?, ?)
         """, params)
     }
 
@@ -82,152 +74,81 @@ class SqlCurtidaDAO implements CurtidaDAO {
     void deleteCurtida(int id) {
 
         sql.execute("""
-            DELETE FROM dados_curtidas
-            WHERE id_dado_curtida = ?
+            DELETE FROM status_match
+            WHERE id_status_match = ?
         """, id)
     }
 
-    /*
-     * Atualização genérica de uma linha específica.
-     *
-     * Não deve ser usada para o fluxo normal
-     * de curtida do candidato/empresa.
-     */
     @Override
     void updateCurtida(Curtida curtida) {
 
         def params = [
                 curtida.getIdEmpresa(),
-                curtida.getIdVaga(),
                 curtida.getIdCandidato(),
-                curtida.getStatusCurtidaEmpresa(),
-                curtida.getStatusCurtidaCandidato(),
+                curtida.getEmpresa_curtiu(),
+                curtida.getCandidato_curtiu(),
                 curtida.getId()
         ]
 
         sql.execute("""
-            UPDATE dados_curtidas
+            UPDATE status_match
             SET id_empresa = ?,
-                id_vaga = ?,
                 id_candidato = ?,
-                status_curtida_empresa = ?,
-                status_curtida_candidato = ?
-            WHERE id_dado_curtida = ?
+                empresa_curtiu = ?,
+                candidato_curtiu = ?
+            WHERE id_status_match= ?
         """, params)
     }
 
-    /*
-     * Verifica se já existe uma curtida
-     * daquele candidato naquela vaga.
-     */
+
     @Override
-    boolean curtidaVagaAlreadyExists(int idCandidato, int idVaga) {
+    boolean candidatoAlreadyLikedEmpresa(int candidatoId,int empresaId) {
 
         def row = sql.firstRow("""
             SELECT EXISTS (
                 SELECT 1
-                FROM dados_curtidas
-                WHERE id_vaga = ?
-                  AND id_candidato = ?
-            )
-        """, [idVaga, idCandidato])
-
-        row[0]
-    }
-
-    /*
-     * Verifica se já existe qualquer registro
-     * entre aquela empresa e aquele candidato.
-     */
-    @Override
-    boolean curtidaEmpresaAlreadyExists(int idEmpresa, int idCandidato) {
-
-        def row = sql.firstRow("""
-            SELECT EXISTS (
-                SELECT 1
-                FROM dados_curtidas
+                FROM status_match
                 WHERE id_empresa = ?
                   AND id_candidato = ?
+                  AND candidato_curtiu = TRUE
             )
-        """, [idEmpresa, idCandidato])
+        """, [empresaId, candidatoId])
 
         row[0]
     }
 
-    /*
-     * CANDIDATO:
-     * altera somente a decisão dele para uma vaga.
-     *
-     * O status da empresa permanece intacto.
-     */
     @Override
-    void updateCurtidaCandidato(
-            int idVaga,
-            int idCandidato,
-            boolean status
-    ) {
-
-        sql.execute("""
-            UPDATE dados_curtidas
-            SET status_curtida_candidato = ?
-            WHERE id_vaga = ?
-              AND id_candidato = ?
-        """, [status, idVaga, idCandidato])
-    }
-
-    /*
-     * EMPRESA:
-     * altera somente o status da empresa.
-     *
-     * Como a empresa está curtindo o candidato,
-     * todas as vagas dessa empresa para esse candidato
-     * são atualizadas.
-     */
-    @Override
-    void updateCurtidaEmpresa(
-            int idEmpresa,
-            int idCandidato,
-            boolean status
-    ) {
-
-        sql.execute("""
-            UPDATE dados_curtidas
-            SET status_curtida_empresa = ?
-            WHERE id_empresa = ?
-              AND id_candidato = ?
-        """, [status, idEmpresa, idCandidato])
-    }
-
-    /*
-     * EMPRESA:
-     * pode curtir um candidato que nunca curtiu
-     * nenhuma vaga dessa empresa.
-     *
-     * Cria uma linha para cada vaga da empresa.
-     */
-    @Override
-    void insertCurtidaEmpresa(
-            int idEmpresa,
-            int idCandidato,
-            boolean status
-    ) {
-
-        sql.execute("""
-            INSERT INTO dados_curtidas (
-                id_empresa,
-                id_vaga,
-                id_candidato,
-                status_curtida_empresa,
-                status_curtida_candidato
+    boolean empresaAlreadyLikedCandidato(int candidatoId, int empresaId){
+        def row = sql.firstRow("""
+            SELECT EXISTS (
+                SELECT 1
+                FROM status_match
+                WHERE id_empresa = ?
+                  AND id_candidato = ?
+                  AND empresa_curtiu = TRUE
             )
-            SELECT
-                id_empresa,
-                id_vaga,
-                ?,
-                ?,
-                false
-            FROM dados_vagas
+        """, [empresaId, candidatoId])
+
+        row[0]
+    }
+
+    @Override
+    Curtida getCurtidaObject(int candidatoId,int empresaId){
+        def row = sql.firstRow("""
+            SELECT *
+            FROM status_match
             WHERE id_empresa = ?
-        """, [idCandidato, status, idEmpresa])
+            AND id_candidato = ?
+        """, [empresaId,candidatoId])
+
+        Curtida curtida = new Curtida()
+
+        curtida.setId(row.id_status_match)
+        curtida.setIdEmpresa(row.id_empresa)
+        curtida.setIdCandidato(row.id_candidato)
+        curtida.setCandidato_curtiu(row.candidato_curtiu)
+        curtida.setEmpresa_curtiu(row.empresa_curtiu)
+
+        curtida
     }
 }

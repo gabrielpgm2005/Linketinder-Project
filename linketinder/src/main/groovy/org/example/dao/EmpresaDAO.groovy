@@ -1,5 +1,6 @@
 package org.example.dao
 
+import org.example.model.Candidato
 import org.example.model.Empresa
 
 interface EmpresaDAO {
@@ -8,4 +9,5 @@ interface EmpresaDAO {
     void insertEmpresa(Empresa empresa);
     void deleteEmpresa(int id);
     void updateEmpresa(Empresa empresa);
+    void salvarCurtidaDaEmpresa(Empresa empresa, Candidato candidato, CurtidaDAO curtidaDB)
 }

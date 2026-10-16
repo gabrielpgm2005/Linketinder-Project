@@ -1,14 +1,10 @@
 package org.example
 
-import org.example.dao.CurtidaDAO
+import org.example.dao.CompetenciaDAO
 import org.example.dao.EmpresaDAO
 import org.example.dao.SqlCompetenciaDAO
-import org.example.dao.SqlCurtidaDAO
-import org.example.dao.SqlEmpresaDAO
-import org.example.dao.SqlVagaCompetenciaDAO
 import org.example.dao.SqlVagaDAO
-import org.example.model.Candidato
-import org.example.model.Competencia
+import org.example.dao.VagaDAO
 import org.example.model.Empresa
 import org.example.model.Vaga
 
@@ -44,97 +40,25 @@ class Empresas extends Pessoas{
         empresas.findEmpresaById(id)
     }
 
-    static adicionarVaga(Empresa empresa, Scanner scanner) {
-        Vaga vaga = new Vaga()
+//    static adicionarVaga(Empresa empresa,VagaDAO vagaDB) {
+//        Vaga vaga = empresa.criarVaga(new Scanner(System.in))
+//
+//        vagaDB.insertVaga(vaga)
+//
+//        adicionarCompetencias(vaga,new SqlCompetenciaDAO(),new SqlVagaDAO())
+//
+//    }
 
-        vaga.idEmpresa = empresa.id
+    static void adicionarCompetencias(Vaga vaga,CompetenciaDAO competenciaDB,VagaDAO vagaDB) {
 
-        println "Entre com o nome da vaga: "
-        vaga.nome = scanner.nextLine()
-
-        println "Entre com a descrição da vaga: "
-        vaga.descricao = scanner.nextLine()
-
-        println "Entre com o local da vaga: "
-        vaga.local = scanner.nextLine()
-
-        new SqlVagaDAO().insertVaga(vaga)
-
-        adicionarCompetencias(vaga, scanner)
-
-        empresa.vagas.add(vaga)
-    }
-
-    static void adicionarCompetencias(Vaga vaga, Scanner scanner) {
-
-        println "Entre com as competencias exigidas pela vaga (separadas por ','): "
-
-        String[] competencias = scanner.nextLine().split(",")
-
-        SqlCompetenciaDAO competenciaDAO = new SqlCompetenciaDAO()
-        SqlVagaCompetenciaDAO vagaCompetenciaDAO = new SqlVagaCompetenciaDAO()
+        String[] competencias = pegarCompetenciasDoUsuario(new Scanner(System.in))
 
         for (String competencia in competencias) {
-
-            competencia = competencia.trim()
-
-            Competencia c = new Competencia()
-            c.competencia = competencia
-
-            competenciaDAO.insertCompetencia(c)
-
-            int idCompetencia = competenciaDAO.findCompetenciaId(competencia)
-
-            vagaCompetenciaDAO.insert(
-                    vaga.getId(),
-                    idCompetencia
-            )
+            competenciaDB.insertCompetencia(competencia)
+            vaga.adicionarCompetencia(competencia)
         }
     }
 
-    static void buscarCandidatos(
-            Empresa empresa,
-            Candidato[] candidatos,
-            Scanner scanner
-    ) {
 
-        CurtidaDAO curtidaDB = new SqlCurtidaDAO()
-
-        for (Candidato candidato in candidatos) {
-
-            println "--------------------------------"
-            println "Candidato: ${candidato.nome}"
-            println "Descricao: ${candidato.descricao}"
-
-            print "Deseja dar like neste candidato? (sim/nao): "
-            String resposta = scanner.nextLine()
-
-            if (resposta != "sim" && resposta != "nao") {
-                continue
-            }
-
-            boolean curtiu = resposta == "sim"
-
-            if (curtidaDB.curtidaEmpresaAlreadyExists(
-                    empresa.id,
-                    candidato.id
-            )) {
-
-                curtidaDB.updateCurtidaEmpresa(
-                        empresa.id,
-                        candidato.id,
-                        curtiu
-                )
-
-            } else {
-
-                curtidaDB.insertCurtidaEmpresa(
-                        empresa.id,
-                        candidato.id,
-                        curtiu
-                )
-            }
-        }
-    }
 }
 
